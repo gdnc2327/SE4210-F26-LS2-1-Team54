@@ -4,19 +4,47 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="author" content="Team 54">
-	<title>App</title>
+	<title>Buffer Overflow Visualization</title>
 	<script src="app.js" defer></script>
 	<style>
 		body {
-			background-color: black;
+			background-color: #131313;
 			color: white;
+			text-align: center;
+		}
+		.visual {
+			font-family: monospace, monospace;
+		}
+		.canary {
+			color: yellow;
 		}
 	</style>
 </head>
 <body>
-	<!-- TODO: Build a small interactive visualization that helps other learners understand either buffer overflow, integer/arithmetic overflow, or Ken Thompson’s paper about trusting the trust. Your app should be educational, interactive, and runnable in a standard browser
-	You may focus on a stack-frame buffer overflow visualization, an integer overflow visualization, or another related scenario such as off-by-one overflow, signed/unsigned conversion, or integer overflow in memory allocation.
-	Your visualization must include meaningful interaction, such as an input box, slider, button, dropdown, or toggle. For buffer overflow, you might show how input fills a buffer and then overwrites nearby memory such as the saved frame pointer or return address. For arithmetic overflow, you might show how a fixed-width value wraps around or compare signed and unsigned behavior. The goal is not to create a real exploit, shellcode, or attack tool. The goal is to create a safe teaching module that makes a concept from class easier to understand.
-	-->
+	<div class="VisualContainer">
+		<div id="MemoryVisual" class="visual" style="font-size: 1.375em;">
+			...
+			<span id="StringBuffer" title="String buffer for user input"></span>
+			<span id="MemoryPadding" title="Memory Padding"></span>
+			<span id="StackBasePointer" title="Stack Base Pointer"></span>
+			<span id="InstructionPointer" title="Instruction Pointer"></span>
+			...
+			<span id="MalwareMemory" title="Malware" style="color: red;"></span>
+		</div>
+		<code id="Message" style="color: red; font-size: 1.25em;"></code>
+		<div id="Legend"></div>
+		<label for="StringInputSize">Size: </label>
+		<span id="StringInputSize"></span>
+	</div>
+	<div class="Input Container">
+		<label for="StringInput">Input String</label>
+		<input type="text" id="StringInput">
+		<div class="options" id="VisualOptions">
+			<label for="MalwareCheckbox">Malware</label>
+			<input type="checkbox" id="MalwareCheckbox"></input>
+			<label for="CanaryCheckbox">Canary</label>
+			<input type="checkbox" id="CanaryCheckbox"></input>
+		</div>
+	</div>
 </body>
 </html>
