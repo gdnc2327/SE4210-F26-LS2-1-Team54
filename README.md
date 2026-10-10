@@ -10,3 +10,7 @@ The visual is broken into 4&ndash;5 parts:
 3. **Stack Base Pointer**: a 4-byte "register" representing the value of `%ebp`
 4. **Instruction Pointer**: a 4-byte "register" representing the value of `%eip`
 5. **Malware** *(optional)*: represents malware in the system (provided with its memory address for convenience)
+
+The visual updates in real-time as the input string is typed, representing the state of memory if the current input were to be the string's value.
+
+Spaces in the string are represented by a bottom square bracket (<code>&#x23B5;</code>, U+23B5).
